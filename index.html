@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Maham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wood-dark:#241409;
+    --wood-mid:#432b18;
+    --wood-grain:#5a3a20;
+    --wood-light:#a9835a;
+    --brass:#c9a66b;
+    --paper:#f4e8d3;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
+  html{ scroll-padding-top:env(safe-area-inset-top,0px); scroll-snap-type:y mandatory; height:100%; }
+  html.scroll-locked, html.scroll-locked body{
+    overflow:hidden !important;
+    touch-action:none;
+  }
+  html,body{ margin:0; }
+  body{
+    position:relative;
+    font-family:'Cormorant Garamond', serif;
+    color:var(--paper);
+    background:
+      repeating-linear-gradient(90deg,
+        rgba(0,0,0,0.14) 0px, rgba(0,0,0,0.04) 2px, transparent 4px, transparent 44px),
+      radial-gradient(ellipse at 25% 0%, var(--wood-grain) 0%, var(--wood-mid) 45%, var(--wood-dark) 100%);
+    background-attachment:fixed;
+  }
+  /* iOS Safari (and most touch browsers) can't do fixed background-attachment
+     on a scrolling body — fall back to plain scroll so the wood texture still shows */
+  @media (hover:none) and (pointer:coarse){
+    body{ background-attachment:scroll; }
+  }
+  body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgOTAwIDkwMCI+CiAgPGZpbHRlciBpZD0icm91Z2giPgogICAgPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuMDEyIiBudW1PY3RhdmVzPSI0IiBzZWVkPSI3IiByZXN1bHQ9Im5vaXNlIi8+CiAgICA8ZmVEaXNwbGFjZW1lbnRNYXAgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0ibm9pc2UiIHNjYWxlPSIyMCIgeENoYW5uZWxTZWxlY3Rvcj0iUiIgeUNoYW5uZWxTZWxlY3Rvcj0iRyIvPgogIDwvZmlsdGVyPgogIDxnIGZpbHRlcj0idXJsKCNyb3VnaCkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzE0MGEwNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik0gNjAgMTIwIEwgMjIwIDE2MCBMIDMyMCAxMDAiIHN0cm9rZS13aWR0aD0iMS42IiBvcGFjaXR5PSIwLjMiLz4KICAgIDxwYXRoIGQ9Ik0gNTAwIDMwMCBMIDYxMCAzNDAgTCA2NjAgMjYwIiBzdHJva2Utd2lkdGg9IjEuMyIgb3BhY2l0eT0iMC4yNSIvPgogICAgPHBhdGggZD0iTSAxNTAgNjAwIEwgMjYwIDY0MCBMIDMwMCA3NDAiIHN0cm9rZS13aWR0aD0iMS40IiBvcGFjaXR5PSIwLjI4Ii8+CiAgICA8cGF0aCBkPSJNIDcwMCA3MDAgTCA3ODAgNjYwIEwgODIwIDczMCIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuMjIiLz4KICA8L2c+Cjwvc3ZnPgo=");
+    background-repeat:repeat;
+    background-size:700px 700px;
+    mix-blend-mode:multiply;
+    opacity:0.4;
+  }
+  header, main, footer{
+    position:relative;
+    z-index:1;
+  }
+
+  header{
+    min-height:100vh;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 6vw;
+    position:relative;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+  }
+  .eyebrow{
+    font-family:'Cinzel', serif;
+    font-size:0.72rem;
+    letter-spacing:0.34em;
+    color:var(--wood-light);
+    margin:0 0 20px;
+  }
+  h1{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:clamp(2rem, 6vw, 3.2rem);
+    margin:0 0 10px;
+    color:var(--paper);
+    letter-spacing:0.02em;
+  }
+  .for-line{
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--wood-light);
+    margin:0 0 34px;
+  }
+  .divider{
+    width:80px;
+    height:1px;
+    background:var(--brass);
+    opacity:0.75;
+  }
+  .scroll-hint{
+    position:absolute;
+    bottom:36px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:0.7rem;
+    letter-spacing:0.28em;
+    color:var(--wood-light);
+    font-family:'Cinzel', serif;
+    opacity:0.7;
+  }
+  .scroll-hint span{
+    display:block;
+    margin-top:8px;
+    font-size:1rem;
+    animation:bob 2s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(6px); }
+  }
+
+  main{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 8vw;
+  }
+
+  .line{
+    min-height:100vh;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:0.55em;
+    padding:6vh 0;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+  }
+  .line p{
+    font-size:clamp(1.2rem, 2.8vw, 1.65rem);
+    line-height:1.85;
+    text-align:center;
+    margin:0;
+    color:var(--paper);
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 2s ease, transform 2s ease;
+  }
+  .line.visible p{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .line.visible p:nth-child(1){ transition-delay:0.00s; }
+  .line.visible p:nth-child(2){ transition-delay:1.4s; }
+  .line.visible p:nth-child(3){ transition-delay:2.8s; }
+  .line.visible p:nth-child(4){ transition-delay:4.2s; }
+  .line.visible p:nth-child(5){ transition-delay:5.6s; }
+  .line.visible p:nth-child(6){ transition-delay:7.0s; }
+  .line.visible p:nth-child(7){ transition-delay:8.4s; }
+  .line.visible p:nth-child(8){ transition-delay:9.8s; }
+  .line.visible p:nth-child(9){ transition-delay:11.2s; }
+  .line.visible p:nth-child(10){ transition-delay:12.6s; }
+  .line.visible p:nth-child(11){ transition-delay:14.0s; }
+  .line.visible p:nth-child(12){ transition-delay:15.4s; }
+
+  footer{
+    min-height:100vh;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:6vh 6vw;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+  }
+  footer p{
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--wood-light);
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  footer p.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .line p, footer p{
+      transition:none;
+      opacity:1;
+      transform:none;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <audio id="bgm" src="M.mp3" loop preload="auto"></audio>
+
+  <header>
+    <p class="eyebrow">A Poem</p>
+    <h1>M.</h1>
+    <p class="for-line">for Maham</p>
+    <div class="divider"></div>
+    <div class="scroll-hint">SCROLL<span>↓</span></div>
+  </header>
+
+  <main id="poem">
+    <div class="line">
+      <p>Would you run to me</p><p>My sweet M.</p><p>Where would you go</p><p>Take me with you</p>
+    </div>
+
+    <div class="line">
+      <p>Your eyes, they belong to me</p><p>My words, they exist for you</p><p>Our hearts, they ache in sync</p><p>Your hair in the wind</p>
+    </div>
+
+    <div class="line">
+      <p>I beg you take me with you</p><p>wherever you're going</p><p>i see no purpose</p><p>without your soul</p><p>without your smile</p><p>the way you touch my hands</p><p>the way you nod</p><p>give yourself to me</p><p>welcome me</p><p>look at me</p><p>tell me i am the only one</p><p>tell me forever</p>
+    </div>
+
+    <div class="line">
+      <p>i can feel myself, getting lost in your embrace</p><p>do you live for me, will you die for me</p><p>tell me you belong to me</p><p>my daydreams are for you alone</p>
+    </div>
+
+    <div class="line">
+      <p>tell me M.</p><p>will we flourish</p><p>even the clouds are weeping</p><p>the rain slides off my petals</p><p>the wind drags me to you</p><p>do the thorns in my stem hurt you</p><p>i will rip them out for you</p><p>i will be born anew</p>
+    </div>
+
+    <div class="line">
+      <p>M. do you call it a curse</p><p>i will kiss it away</p><p>i will kiss your scars</p><p>with these lips</p><p>yours alone</p><p>take me with you, my darling</p>
+    </div>
+
+    <div class="line">
+      <p>tell me the world through your eyes</p><p>is it meant to be so empty</p><p>i dont understand</p><p>but you make sense</p>
+    </div>
+
+    <div class="line">
+      <p>let me inside</p><p>open the door</p><p>please, its cold</p><p>i dont know</p>
+    </div>
+
+    <div class="line">
+      <p>is it a crime to be unsure</p><p>why would it be</p><p>to be afraid</p><p>of what comes next</p><p>when the web of destiny</p><p>knits a fate so cruel for us</p>
+    </div>
+
+    <div class="line">
+      <p>do you not want to</p><p>talk about anything</p><p>then rest in my arms</p><p>and weep</p>
+    </div>
+
+    <div class="line">
+      <p>take me with you M.</p><p>take me to where you go</p><p>that world i'd like to see</p><p>just once</p><p>and maybe i wont return</p><p>could i see the stars the way you do</p>
+    </div>
+
+    <div class="line">
+      <p>fix me, ruin me, i dont care</p><p>make me yours</p><p>paint me in a color you love</p><p>kill me in the way you'd want</p><p>devour every part of me</p><p>and make it yours</p>
+    </div>
+
+    <div class="line">
+      <p>M. get through it all</p><p>like you always do</p><p>with the strength of a thousand soldiers</p><p>and know that back home</p><p>im waiting for you</p><p>a thousand years</p><p>find your way back home</p><p>rest assured</p><p>i wait for you</p>
+    </div>
+
+    <div class="line">
+      <p>take me with you, my dear M.</p><p>please</p><p>this world is nothing to me</p><p>without you in it</p>
+    </div>
+
+    <div class="line">
+      <p>kiss me, kill me</p><p>love me, hurt me</p><p>hold me, as tight as you want</p><p>what could i want more</p>
+    </div>
+
+    <div class="line">
+      <p>run to me</p><p>my sweet M.</p><p>wherever you go</p><p>take me with you</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>— always</p>
+  </footer>
+
+  <script>
+    (function(){
+      const lineDelay = 1.4;      // seconds between each line's delay (matches CSS nth-child steps)
+      const transitionDur = 2.0;  // seconds, matches .line p transition duration
+      const footerDur = 0.9;      // seconds, matches footer p transition duration
+      const buffer = 0.3;         // small cushion after the last line finishes
+
+      // Browsers (especially on mobile) block audio from starting on its own —
+      // it has to begin inside a real user gesture. Start it on the very
+      // first tap/scroll/keypress and then stop listening.
+      const bgm = document.getElementById('bgm');
+      function startMusic(){
+        bgm.play().catch(()=>{ /* still blocked or file missing — ignore */ });
+        window.removeEventListener('pointerdown', startMusic);
+        window.removeEventListener('touchstart', startMusic);
+        window.removeEventListener('wheel', startMusic);
+        window.removeEventListener('scroll', startMusic);
+        window.removeEventListener('keydown', startMusic);
+      }
+      window.addEventListener('pointerdown', startMusic, { passive:true });
+      window.addEventListener('touchstart', startMusic, { passive:true });
+      window.addEventListener('wheel', startMusic, { passive:true });
+      window.addEventListener('scroll', startMusic, { passive:true });
+      window.addEventListener('keydown', startMusic);
+
+      let lockTimer = null;
+      let isLocked = false;
+
+      // overflow:hidden alone doesn't stop iOS Safari's momentum/rubber-band
+      // scrolling once a swipe is already in motion, so block touchmove too.
+      document.addEventListener('touchmove', function(e){
+        if(isLocked) e.preventDefault();
+      }, { passive:false });
+
+      function lockScroll(ms){
+        isLocked = true;
+        document.documentElement.classList.add('scroll-locked');
+        if(lockTimer) clearTimeout(lockTimer);
+        lockTimer = setTimeout(()=>{
+          isLocked = false;
+          document.documentElement.classList.remove('scroll-locked');
+        }, ms);
+      }
+
+      const stanzas = document.querySelectorAll('main .line');
+      const stanzaObserver = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting && !entry.target.classList.contains('visible')){
+            entry.target.classList.add('visible');
+            const lineCount = entry.target.querySelectorAll('p').length;
+            const totalMs = ((lineCount - 1) * lineDelay + transitionDur + buffer) * 1000;
+            lockScroll(totalMs);
+          }
+        });
+      }, { threshold: 0.95 });
+      stanzas.forEach(el => stanzaObserver.observe(el));
+
+      const footerP = document.querySelector('footer p');
+      const footerObserver = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting && !entry.target.classList.contains('visible')){
+            entry.target.classList.add('visible');
+            lockScroll((footerDur + buffer) * 1000);
+          }
+        });
+      }, { threshold: 0.95 });
+      footerObserver.observe(footerP);
+    })();
+  </script>
+
+</body>
+</html>
